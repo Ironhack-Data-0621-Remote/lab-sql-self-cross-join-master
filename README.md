@@ -1,0 +1,1 @@
+# lab-sql-self-cross-join-master
