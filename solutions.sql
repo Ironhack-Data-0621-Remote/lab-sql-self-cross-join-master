@@ -1,26 +1,6 @@
 USE sakila;
 
 -- 1- Get all pairs of actors that worked together.
-SELECT faan1.film_id, faan1.actor_id AS actor1, faan1.first_name AS firstname_1, faan1.last_name AS lastname_1, faan2.actor_id AS actor2, faan2.first_name AS firstname_2, faan2.last_name AS lastname_2
-FROM (
-	SELECT fa.film_id, fa.actor_id, a.first_name, a.last_name
-	FROM film_actor fa
-	JOIN actor a
-	ON fa.actor_id = a.actor_id
-	ORDER BY fa.film_id
-    ) faan1
-JOIN (
-	SELECT fa.film_id, fa.actor_id, a.first_name, a.last_name
-	FROM film_actor fa
-	JOIN actor a
-	ON fa.actor_id = a.actor_id
-	ORDER BY fa.film_id
-    )  faan2
-ON faan1.film_id = faan2.film_id
-AND faan1.actor_id <> faan2.actor_id
-ORDER BY  faan1.film_id
-limit 200; 
-
 SELECT faan1.film_id, faan1.first_name AS firstname_1, faan1.last_name AS lastname_1, faan2.first_name AS firstname_2, faan2.last_name AS lastname_2
 FROM (
 	SELECT fa.film_id, fa.actor_id, a.first_name, a.last_name
